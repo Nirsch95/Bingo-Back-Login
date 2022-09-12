@@ -7,9 +7,12 @@ dotenv.config({ path: './config/config.env' })
 
 let token;
 protect = async(req, res, next) => { 
+    if (req.cookies === undefined) {
+        res.cookie('token', 'none');
+      }
     if(
         req.headers.authorization &&
-        req.headers.authorization.startsWith('Bearer')
+        req.headers.authorization.starstWith('Bearer')
     ){
         // Set token from Bearer token in header
         token = req.headers.authorization.split(' ')[1];

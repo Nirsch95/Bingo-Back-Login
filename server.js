@@ -5,15 +5,16 @@ const connectDB = require('./config/db')
 const router = require('./routes/users')
 const bodyParser = require('body-parser')
 const auth = require('./routes/auth')
-const protect = require('./middleware/auth');
-
+const protect = require('./middleware/auth')
+const cookieparser = require('cookie-parser')
 
 // Load env vars
 dotenv.config({path:'./config/config.env'})
 
 const app = express();
 app.use(logger)
-app.use(protect)
+app.use(cookieparser())
+app.use('/me', protect)
 
 connectDB(app)
 

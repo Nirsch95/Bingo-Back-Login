@@ -17,7 +17,7 @@ router
 
         
         router
-        .route('/:id')
+        .route('/user/:id')
         .get(getUser)
         .put(updateUser)
         .delete(deleteUser);
