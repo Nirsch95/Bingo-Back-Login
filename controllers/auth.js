@@ -21,8 +21,8 @@ exports.register = async (req, res, next) => {
     const activate_token = jwt.sign({ email, password }, process.env.JWT_ACC_ACTIVATE, { expiresIn: '20m' });
 
     const data = {
-        from: 'felix_1095castro@hotmail.com',
-        to: 'castromanzano95@gmail.com',
+        from: 'castromanzano95@gmail.com',
+        to: 'felix_1095castro@hotmail.com',
         subject: 'Hello',
         html: `
             <h2>Please click on given link to activate your account</h2>
@@ -77,6 +77,7 @@ exports.activateAccount = async (req, res, next) => {
 exports.login = async (req, res, next) => {
 
     const { email, password } = req.body;
+    console.log(req.body);
 
     // Validate email & password
     if (!email || !password) {
